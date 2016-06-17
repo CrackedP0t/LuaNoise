@@ -1,0 +1,7 @@
+*~
+bin/*
+src/*
+include/*
+*.bmp
+*.ter
+noise.so
