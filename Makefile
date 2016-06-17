@@ -9,4 +9,4 @@ objects:
 clean:
 	rm src/*
 	rm include/*
-	rm bin/*
+	rm noise.so
