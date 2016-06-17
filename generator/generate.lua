@@ -13,7 +13,7 @@ local enumsDir = "generator/enums/"
 local includeDir = "include/"
 local srcDir = "src/"
 
-local noisePath = srcDir .. "noise.cpp"
+local noisePath = srcDir .. "noise_gen.cpp"
 
 local classesDict = {}
 local baseClasses = {}
