@@ -50,5 +50,5 @@ renderer:Render ()
 
 local writer = noise.WriterBMP ()
 writer:SetSourceImage (image)
-writer:SetDestFilename ("tutorial_5.bmp")
+writer:SetDestFilename ("tutorial_6.bmp")
 writer:WriteDestFile ()

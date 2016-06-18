@@ -4,4 +4,9 @@ src/*_gen.cpp
 include/*_gen.hpp
 *.bmp
 *.ter
-noise.so
+*.so*
+*.o
+*.a
+*.lo
+*.la
+*.d
