@@ -1,5 +1,4 @@
 *~
-bin/*
 src/*_gen.cpp
 include/*_gen.hpp
 *.bmp
