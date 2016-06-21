@@ -17,12 +17,12 @@ libnoise.so.0: libnoise.so.0.3
 
 # Real build targets
 libnoise.so.0.3: $(OBJECTS)
-	$(LIBTOOL) --mode=link $(CXX) $(LDFLAGS) -Xcompiler -shared -Wl,-soname=libnoise.so.0 -o $@ $(OBJECTS:.o=.lo)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -Xcompiler -shared -Wl,-soname=libnoise.so.0 -o $@ $(OBJECTS:.o=.lo)
 
 libnoise.a: $(OBJECTS)
-	$(LIBTOOL) --mode=link $(CXX) $(LDFLAGS) -o $@ $(OBJECTS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ $(OBJECTS)
 libnoise.la: $(OBJECTS)
-	$(LIBTOOL) --mode=link $(CXX) $(LDFLAGS) -o $@ $(OBJECTS:.o=.lo)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ $(OBJECTS:.o=.lo)
 
 clean:	cleandeps cleanobjs cleanlib
 cleandeps:
@@ -46,10 +46,10 @@ cleanlib:
 
 # C and C++ libtool (rather than raw CXX/CC) use
 %.o %.lo: %.cpp
-	$(LIBTOOL) --mode=compile $(CXX) -fPIC -O3  $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(@:.lo=.o)
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) -fPIC -O3  $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(@:.lo=.o)
 
 %.o %.lo: %.c
-	$(LIBTOOL) --mode=compile $(CC) -fPIC -O3 $(CPPFLAGS) $(CFLAGS) -c $< -o $(@:.lo=.o)
+	$(LIBTOOL) --mode=compile --tag=CXX $(CC) -fPIC -O3 $(CPPFLAGS) $(CFLAGS) -c $< -o $(@:.lo=.o)
 
 # If dependancies have never been built this will produce a horde of
 # "file not found" warnings and *then* build the deps.  Very odd.

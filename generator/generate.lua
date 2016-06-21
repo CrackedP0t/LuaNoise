@@ -54,7 +54,8 @@ for enumI, enum in ipairs(enums) do
     end
 
     local toEnum = [[static $enumname string_to_$enumname(const char * name) {
-$ifs}
+$ifs;
+}
 ]]
     toEnum = toEnum:gsub("$enumname", enum.name)
         :gsub("$ifs", enumIfs)

@@ -1,4 +1,4 @@
-CC=g++
+CC?=g++
 CFLAGS=-c -fPIC
 LFLAGS=-shared
 
@@ -7,6 +7,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 LIBRARY=noise.so
 
 all: $(LIBRARY)
+	@echo $(OS)
 
 $(LIBRARY): libnoise $(OBJECTS)
 	$(CC) $(LFLAGS) noise/src/*.o noise/src/module/*.o noise/src/model/*.o $(OBJECTS) -o $@
