@@ -4,6 +4,7 @@ include/*_gen.hpp
 *.bmp
 *.ter
 *.so*
+*.dll
 *.o
 *.a
 *.lo

@@ -8,6 +8,13 @@ DEPENDS=$(SOURCES:.cpp=.d)
 # What source objects are we building?
 OBJECTS=$(SOURCES:.cpp=.o)
 
+CPPFLAGS+= -O3
+
+ifneq ($(OS),Windows_NT)
+CPPFLAGS+= -fPIC
+endif
+
+
 .PHONY: all clean cleandeps cleanobjs cleanlib libnoise libnoise.so libnoise.so.0
 
 # hooks for future makefiles being able to make multiple SOs, or older SOs
@@ -46,10 +53,10 @@ cleanlib:
 
 # C and C++ libtool (rather than raw CXX/CC) use
 %.o %.lo: %.cpp
-	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) -fPIC -O3  $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(@:.lo=.o)
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $(@:.lo=.o)
 
 %.o %.lo: %.c
-	$(LIBTOOL) --mode=compile --tag=CXX $(CC) -fPIC -O3 $(CPPFLAGS) $(CFLAGS) -c $< -o $(@:.lo=.o)
+	$(LIBTOOL) --mode=compile --tag=CXX $(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@:.lo=.o)
 
 # If dependancies have never been built this will produce a horde of
 # "file not found" warnings and *then* build the deps.  Very odd.
