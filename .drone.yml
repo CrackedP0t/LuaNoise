@@ -1,7 +1,7 @@
 build:
-  image: teaci/msys64
-  shell: mingw64
+  image: teaci/msys32
+  shell: mingw32
   pull: true
   commands:
-    - pacman -S --needed --noconfirm --noprogressbar mingw-w64-x86_64-lua51
+    - pacman -S --needed --noconfirm --noprogressbar mingw-w64-i686-lua51
     - ./build.sh
