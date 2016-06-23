@@ -6,10 +6,12 @@ It uses a custom generator to write the C++ code for the Lua package, which uses
 
 Currently it only works with Lua 5.1 (and therefore LuaJIT), but that's being worked on.
 
-Run `make` in the root directory to generate the C++ files and compile them.
+Compiles with GCC for Linux and MinGW from MXE for Windows.
 
-Then, take the `noise.so` file from the root directory and put it wherever you need for your Lua program.
+In order to build for Linux, run `./build.sh` in the root directory. In order to build for Windows, run `OS=Windows_NT ./build.sh` in the root directory.
 
-If you would like to see some examples, the [tutorials](http://libnoise.sourceforge.net/tutorials/index.html) from the libnoise website have been translated to work with Lua. Make sure to copy `noise.so` into the `tutorials/` directory, then run them with Lua 5.1.
+Then, take the `noise.so` or `noise.dll` file from the root directory and put it wherever you need for your Lua program.
+
+If you would like to see some examples, the [tutorials](http://libnoise.sourceforge.net/tutorials/index.html) from the libnoise website have been translated to work with Lua. Make sure to copy `noise.so` or `noise.dll` into the `tutorials/` directory, then run them with Lua 5.1.
 
 It does include libnoise's `noiseutils`.
