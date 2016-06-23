@@ -5,8 +5,10 @@ include/*_gen.hpp
 *.ter
 *.so*
 *.dll
+!lua51.dll
 *.o
 *.a
 *.lo
 *.la
 *.d
+release/
