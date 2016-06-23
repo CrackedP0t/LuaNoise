@@ -46,15 +46,17 @@ for enumI, enum in ipairs(enums) do
     for i, v in ipairs(enum) do
         local ifTemplate = [[	if (strcmp("$luaname", name) == 0) {
 		return $cname;
-	}
+	} else 
 ]]
         ifTemplate = ifTemplate:gsub("$luaname", v.luaname)
             :gsub("$cname", v.cname)
         enumIfs = enumIfs .. ifTemplate
     end
 
-    local toEnum = [[static $enumname string_to_$enumname(const char * name) {
-$ifs;
+    local toEnum = [[static $enumname string_to_$enumname(lua_State * L, const char * name) {
+$ifs{
+		luaL_error(L, "\"%%s\" is not a valid $enumname", name);
+	}
 }
 ]]
     toEnum = toEnum:gsub("$enumname", enum.name)
@@ -277,11 +279,12 @@ int noise_$prefix_$classname(lua_State * L) {
                 if not arg.enumname then
                     argTemplate = "$checktype, "
                 else
-                    argTemplate = "string_to_$argenumname($checktype), "
+                    argTemplate = "string_to_$argenumname(L, $checktype), "
                     argTemplate = argTemplate:gsub("$argenumname", tostring(arg.enumname))
                 end
 
-                argTemplate = argTemplate:gsub("$checktype", checktype)                    :gsub("$argindex", argI + 1)
+                argTemplate = argTemplate:gsub("$checktype", checktype)
+					:gsub("$argindex", argI + 1)
 
                 args = args .. argTemplate
             end

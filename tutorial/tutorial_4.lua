@@ -1,9 +1,9 @@
 local noise = require("noise")
 
 local myModule = noise.Perlin()
-myModule:SetOctaveCount(6)
-myModule:SetFrequency(1.0)
-myModule:SetPersistence(0.5)
+myModule:SetOctaveCount(2)
+myModule:SetFrequency(2.0)
+myModule:SetPersistence(0.75)
 
 local heightMap = noise.NoiseMap()
 local heightMapBuilder = noise.NoiseMapBuilderPlane()

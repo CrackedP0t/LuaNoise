@@ -12,3 +12,4 @@ include/*_gen.hpp
 *.la
 *.d
 release/
+*.png
