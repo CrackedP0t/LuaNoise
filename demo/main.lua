@@ -48,7 +48,12 @@ renderer:SetLightContrast (3)
 renderer:SetLightBrightness (2)
 renderer:Render ()
 
-local writer = noise.WriterBMP ()
-writer:SetSourceImage (image)
-writer:SetDestFilename ("tutorial_6.bmp")
-writer:WriteDestFile ()
+function love.draw()
+	for x = 0, image:GetWidth() do
+		for y = 0, image:GetHeight() do
+			local c = image:GetValue(x, y)
+			love.graphics.setColor(c.red, c.blue, c.green)
+			love.graphics.points(x, y)
+		end
+	end
+end

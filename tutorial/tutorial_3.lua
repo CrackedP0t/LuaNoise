@@ -11,6 +11,7 @@ heightMapBuilder:SetBounds (2, 6, 1, 5)
 heightMapBuilder:Build ()
 
 local renderer = noise.RendererImage ()
+
 local image = noise.Image ()
 renderer:SetSourceNoiseMap (heightMap);
 renderer:SetDestImage (image)

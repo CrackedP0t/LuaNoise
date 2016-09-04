@@ -2,6 +2,8 @@ LuaNoise
 ===
 This is a Lua library written in C++ to expose the functionality of [libnoise](http://libnoise.sourceforge.net/) to Lua programs.
 
+For some examples of what LibNoise can do, visit libnoise's [example page](http://libnoise.sourceforge.net/).
+
 It uses a custom generator to write the C++ code for the Lua package, which uses Lua's C API directly.
 
 Currently it only works with Lua 5.1 (and therefore LuaJIT), but that's being worked on.
