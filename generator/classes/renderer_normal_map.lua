@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "utils",
 	name = "RendererNormalMap",
 	filename = "renderer_normal_map",
 	constructorargs = util.construct(),

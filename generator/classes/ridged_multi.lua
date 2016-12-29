@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "module",
 	name = "RidgedMulti",
 	filename = "ridged_multi",
 	constructorargs = util.construct(),

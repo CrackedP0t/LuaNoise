@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "module",
 	name = "Clamp",
 	filename = "clamp",
 	constructorargs = util.construct(),

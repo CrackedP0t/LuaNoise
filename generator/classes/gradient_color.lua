@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "utils",
 	name = "GradientColor",
 	filename = "gradient_color",
 	constructorargs = util.construct(),

@@ -131,16 +131,14 @@ for classI, class in ipairs(classes) do
 
 void noise_metatable_$classname(lua_State * L);
 
-int noise_$prefix_$classname(lua_State * L);
+int noise_$classname(lua_State * L);
 ]]
 
-			hppFile = hppFile:gsub("$prefix", class.prefix)
-			:gsub("$classname", class.name)
+			hppFile = hppFile:gsub("$classname", class.name)
 
 		local cppFile = [[#include "everything_gen.hpp"
 #include <cstring>
 #include <string>
-#include <typeinfo>
 
 using namespace noise;
 using namespace noise::module;
@@ -198,7 +196,7 @@ void noise_metatable_$classname(lua_State * L) {
 	lua_setmetatable(L, -2);
 }
 
-int noise_$prefix_$classname(lua_State * L) {
+int noise_$classname(lua_State * L) {
 	luaL_newmetatable(L, "noise.$classname");
 
 	lua_pushstring(L, "__index");
@@ -215,7 +213,7 @@ int noise_$prefix_$classname(lua_State * L) {
 
 	$classname * o = new $classname($constructorargs);
 
-	*(void **)lua_newuserdata(L, sizeof(void *)) = o;
+	*($classname **)lua_newuserdata(L, sizeof($classname *)) = o;
 
 	noise_metatable_$classname(L);
 
@@ -239,14 +237,12 @@ int noise_$prefix_$classname(lua_State * L) {
 			:gsub("$tostrings", toStrings)
 			:gsub("$iattrifs", iAttrIfs)
 			:gsub("$niattrifs", niAttrIfs)
-			:gsub("$prefix", class.prefix)
 			:gsub("$classname", class.name)
 			:gsub("$constructorargs", constructorargs)
 
-		local constpair = [[	{"$classname", noise_$prefix_$classname},
+		local constpair = [[	{"$classname", noise_$classname},
 ]]
 		constpair = constpair:gsub("$classname", class.name)
-			:gsub("$prefix", class.prefix)
 
 		regpairs = regpairs .. constpair
 
@@ -318,10 +314,9 @@ int noise_$prefix_$classname(lua_State * L) {
 			ret = ret:gsub("$methodname", method.name)
 				:gsub("$methodargs", args)
 
-			local defineTemplate = "\n\nint noise_$prefix_$name_$methodname(lua_State * L)"
+			local defineTemplate = "\n\nint noise_$name_$methodname(lua_State * L)"
 
-			defineTemplate = defineTemplate:gsub("$prefix", class.prefix)
-				:gsub("$name", class.name)
+			defineTemplate = defineTemplate:gsub("$name", class.name)
 				:gsub("$methodname", method.name)
 
 			local methodTemplate = defineTemplate .. [[ {
@@ -340,11 +335,10 @@ $ret	return $numret;
 			cppFile = cppFile .. methodTemplate
 			hppFile = hppFile .. defineTemplate .. ";"
 
-			local regpair = [[	{"$methodname", noise_$prefix_$classname_$methodname},
+			local regpair = [[	{"$methodname", noise_$classname_$methodname},
 ]]
 			regpair = regpair:gsub("$classname", class.name)
 				:gsub("$methodname", method.name)
-				:gsub("$prefix", class.prefix)
 
 			methodreg = methodreg .. regpair
 		end

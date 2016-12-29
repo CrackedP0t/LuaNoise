@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "modules",
 	name = "ScalePoint",
 	filename = "scale_point",
 	constructorargs = util.construct(),

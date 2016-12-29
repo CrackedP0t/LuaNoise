@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "modules",
 	name = "ScaleBias",
 	filename = "scale_bias",
 	constructorargs = util.construct(),
@@ -13,4 +12,3 @@ return {
 		util.set("SetScale", "number")
 	}
 }
-		

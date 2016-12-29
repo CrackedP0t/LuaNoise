@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "module",
 	name = "Blend",
 	filename = "blend",
 	constructorargs = util.construct(),

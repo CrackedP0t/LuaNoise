@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "utils",
 	name = "WriterBMP",
 	filename = "writer_bmp",
 	constructorargs = util.construct(),

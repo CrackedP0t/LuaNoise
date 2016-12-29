@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "util",
 	name = "NoiseMap",
 	filename = "noise_map",
 	constructorargs = util.construct(),

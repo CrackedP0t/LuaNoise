@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "modules",
 	name = "Plane",
 	filename = "plane",
 	constructorargs = util.construct(),

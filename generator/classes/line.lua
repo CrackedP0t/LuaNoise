@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "model",
 	name = "Line",
 	filename = "line",
 	constructorargs = util.construct(),

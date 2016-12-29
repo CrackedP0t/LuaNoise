@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "NoiseMapBuilder",
-	prefix = "utils",
 	name = "NoiseMapBuilderCylinder",
 	filename = "noise_map_builder_cylinder",
 	constructorargs = util.construct(),

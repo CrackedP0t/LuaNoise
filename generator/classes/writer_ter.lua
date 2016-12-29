@@ -1,7 +1,6 @@
 local util = require("generator.util")
 
 return {
-	prefix = "utils",
 	name = "WriterTER",
 	filename = "writer_ter",
 	constructorargs = util.construct(),

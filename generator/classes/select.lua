@@ -2,7 +2,6 @@ local util = require("generator.util")
 
 return {
 	inherits = "Module",
-	prefix = "modules",
 	name = "Select",
 	filename = "select",
 	constructorargs = util.construct(),
